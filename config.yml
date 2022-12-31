@@ -1,0 +1,20 @@
+language: en
+
+pipeline:
+  - name: "WhitespaceTokenizer"
+  - name: "RegexFeaturizer"
+  - name: "LexicalSyntacticFeaturizer"
+  - name: "CountVectorsFeaturizer"
+  - name: "CountVectorsFeaturizer"
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 8
+  - name: "DIETClassifier"
+    epochs: 800
+  - name: "EntitySynonymMapper"
+
+policies:
+  - name: MemoizationPolicy
+  - name: TEDPolicy
+    max_history: 8
+    epochs: 800
